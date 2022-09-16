@@ -60,14 +60,16 @@ nt.delete('/:id', (req, res) => {
                 currentDb = JSON.parse(data);
                 console.log(currentDb);
                 //console.log(req.body);
-                let deletePosition = null //postion of obj to delete
+                let deletePosition = -1; //postion of obj to delete
                 for (let i=0; i<currentDb.length; i++) {
                     if (currentDb[i].id === id) {
                         deletePosition = i;
+                        
                         break;
                     }
-                }
-                if (deletePosition) {
+                };
+                console.log(deletePosition);
+                if (deletePosition>=0) {
                     let deletedNotes = currentDb[deletePosition];
                     currentDb.splice(deletePosition,1);
                     console.log(currentDb);
