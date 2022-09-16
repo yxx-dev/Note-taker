@@ -7,7 +7,7 @@ const {v4: uuidv4} = require('uuid');
 nt.get('/', (req, res) => {
     console.log(`successful ${req.method} call`);
     fs.readFile('./db/db.json', 'utf8', (err, data) => 
-        err ? console.error(err) : res.json(JSON.parse(data)));
+        err ? res.json(err) : res.json(JSON.parse(data)));
 })
 
 //POST route
@@ -45,10 +45,12 @@ nt.post('/', (req, res) => {
             
         })    
     } else res.json('incomplete entries')
-    
+})
 
-    //fs.appendFile('./db/db.json',, err => 
-    //    err ? console.error(err) : console.log('recorded'));
+//DELETE route
+nt.delete('/:id', (req, res) => {
+    console.log(`successful ${req.method} call with id:${req.params.id}`);
+
 })
 
 module.exports = nt;

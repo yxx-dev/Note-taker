@@ -8,5 +8,4 @@ const app = express();
 //define /notes route
 app.use('/notes',notesRouter);
 
-
 module.exports = app;
