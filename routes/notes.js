@@ -49,8 +49,36 @@ nt.post('/', (req, res) => {
 
 //DELETE route
 nt.delete('/:id', (req, res) => {
-    console.log(`successful ${req.method} call with id:${req.params.id}`);
-
+    const id = req.params.id;
+    console.log(`successful ${req.method} call with id:${id}`);
+    if (id) {
+        let currentDb = [];
+        fs.readFile('./db/db.json','utf8', (err,data) => {
+            if(err) {
+                console.error(err);
+            } else {
+                currentDb = JSON.parse(data);
+                console.log(currentDb);
+                //console.log(req.body);
+                let deletePosition = null //postion of obj to delete
+                for (let i=0; i<currentDb.length; i++) {
+                    if (currentDb[i].id === id) {
+                        deletePosition = i;
+                        break;
+                    }
+                }
+                if (deletePosition) {
+                    let deletedNotes = currentDb[deletePosition];
+                    currentDb.splice(deletePosition,1);
+                    console.log(currentDb);
+                    fs.writeFile('./db/db.json', JSON.stringify(currentDb, null, " "), err =>
+                        err ? res.json(err) : res.json(deletedNotes)
+                    )
+                } else res.json('no matching record to delete');
+            }
+            
+        })    
+    } else res.json('missing id');
 })
 
 module.exports = nt;
