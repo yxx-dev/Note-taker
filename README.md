@@ -3,6 +3,7 @@
 ## Description
 An application that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
 Walk-through video: https://drive.google.com/file/d/1uOkz-lSzBWr_PQcFciza0zd75dodubIh/view
+Deployment: https://calm-gorge-66258.herokuapp.com/
 
 Functions: 
 1. Record note title and body text
