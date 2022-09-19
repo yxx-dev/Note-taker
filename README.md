@@ -17,7 +17,9 @@ NA
 Node.js, Express
 
 ## Usage
-For demonstration purpose only.
+For demonstration purpose only. <br />
+Screenshot: <br />
+![alt text](/assets/images/Screenshot.png)
 
 ## Credits
 Developed from starter code:
